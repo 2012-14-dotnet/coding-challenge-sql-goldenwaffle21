@@ -1,0 +1,30 @@
+--DDL
+CREATE TABLE Department(
+    ID INT NOT NULL PRIMARY KEY,
+    [Name] VARCHAR(50) NOT NULL,
+    [Location] VARCHAR(100) NOT NULL,
+);
+
+CREATE TABLE Employee
+(
+    ID INT NOT NULL PRIMARY KEY,
+    FirstName VARCHAR(20) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    SSN INT NOT NULL UNIQUE,
+    DepID INT NOT NULL,
+    FOREIGN KEY (DepID) REFERENCES Department(ID),
+);
+
+CREATE TABLE EmpDetails
+(
+    ID INT NOT NULL PRIMARY KEY,
+    Salary MONEY NOT NULL,
+    Address1 VARCHAR(50) NOT NULL,
+    Address2 VARCHAR(50),
+    City VARCHAR(20) NOT NULL,
+    [State] VARCHAR(2) NOT NULL,
+    Country VARCHAR(20) NOT NULL,
+    FOREIGN KEY (ID) REFERENCES Employee(ID),
+);
+
+GO
